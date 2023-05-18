@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Sistema ERP</title>
+    <style>
+
+        *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+
+        .container{
+            width: 100%;
+        }
+
+        .headerApp{
+            width: 100%;
+            height: 100px;
+            background: #041226ff;
+            color: #fd5923ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .bodyContainer{
+            padding: 10px;
+        }
+
+        .bodyContainer .box-form{
+            margin: 10px 0px;
+        }
+
+        .bodyContainer .box-form input{
+            font-size: 1em;
+            padding: 5px;
+        }
+
+        .containerInput{
+            display: flex;
+        }
+
+        ul{
+            width: 100%;
+        }
+        
+        .containerInput .btn-calc{
+            padding: 2px 15px;
+            margin-left: 5px;
+        }
+
+        .footerApp{
+            width: 100%;
+            height: 150px;
+            background: #041226ff;
+            color: #fd5923ff;
+        }
+
+        .result{
+            color: #fd5923ff;;
+        }
+
+        .resTotal{
+            margin: 10px 0px;
+        }
+
+        .message{
+            padding: 10px;
+            width: 100%;
+            background: rgb(196, 196, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+
+        @media (max-width : 500px) {
+
+            .headerApp{
+                font-size: 0.7em;
+            }
+            
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="headerApp">
+            <h1>Mini Sistema ERP</h1>
+            <p>Calcule as provisões de funcionários da sua empresa.</p>
+        </header>
+        <body class="bodyApp">
+
+            <div class="bodyContainer">
+
+                <div class="message"></div>
+
+                <div class="box-form">
+
+                    <h2>Salário</h2>
+                    <div class="containerInput">
+                        <input class="inputSalario" type="text" placeholder="Insira o seu salário...">
+                        <button class="btn-calc">Calcular</button>
+                    </div>
+    
+                </div>
+    
+                <h2>Calculo de provisões.</h2>
+                <ul>
+                    <li>Férias 1/12: <span class="result"></span></li>
+                    <li>Adicional de Férias 1/3: <span class="result"></span></li>
+                    <li>FGTS Férias e Adicional 1/3: <span class="result"></span></li>
+                    <li>13° Salário 1/12: <span class="result"></span></li>
+                    <li>FGTS 13° Salário: <span class="result"></span></li>
+                    <li>Aviso Prévio 1/12: <span class="result"></span></li>
+                    <li>FGTS Aviso Prévio 1/12: <span class="result"></span></li>
+                    <li>Multa FGTS 1/12: <span class="result"></span></li>
+                    <li class="resTotal"><b>TOTAL PROVISÕES: <span class="result"></span></b></li>
+                </ul>
+
+            </div>
+            
+        </body>
+        <footer class="footerApp">
+
+        </footer>
+
+    </div>
+    
+</body>
+<script src="assets/js/script.js"></script>
+<script>
+
+    const btn = document.querySelector(".btn-calc");
+    const salario = document.querySelector(".inputSalario");
+    btn.addEventListener("click", function(){
+        console.log(parseInt(salario.value));
+
+        const calcSalario = new CalcSalario(parseInt(salario.value));
+        calcSalario._resultProvisoes();
+
+    });
+
+
+
+
+</script>
+</html>
